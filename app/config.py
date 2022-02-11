@@ -12,3 +12,4 @@ class Development(Config):
     """
     Development configuration
     """
+    DEBUG = True
