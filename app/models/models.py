@@ -20,3 +20,11 @@ class User:
         self.email = email
         self.password = password
         self.password2 = password2 
+    
+    #Saving  user email
+    def save_email(self):
+        User.user_email.append(self.email)
+
+    #Saving user password
+    def save_passwrod(self):
+        User.user_password.append(self.password)
