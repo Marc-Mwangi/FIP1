@@ -26,5 +26,8 @@ class User:
         User.user_email.append(self.email)
 
     #Saving user password
-    def save_passwrod(self):
+    def save_password(self):
         User.user_password.append(self.password)
+
+    #Confirmig user information in Login
+    

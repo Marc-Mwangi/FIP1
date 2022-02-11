@@ -1,10 +1,11 @@
+from crypt import methods
 from flask import redirect, render_template, url_for
 from app import app
 from .models import User 
-from .forms import SignUpForm
+from .forms import SignUpForm, LogInForm
 
 
-
+User = User.User
 
 app.config['SECRET_KEY'] = 'aSKh3r'
 
@@ -16,11 +17,18 @@ def dashboard():
 
     return render_template('index.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET','POST'])
 def login():
-    return render_template('login.html')
+    form= LogInForm()
+    emails = User.user_email
+    if form.validate_on_submit():
+        email = form.email.data
 
-@app.route('/signup')
+        
+
+    return render_template('login.html',form=form,email =emails)
+
+@app.route('/signup',methods=['POST','GET'])
 def sigup():
     form = SignUpForm()
     if form.validate_on_submit():
@@ -30,7 +38,7 @@ def sigup():
         password2= form.password2.data
         email = form.email.data
         new_user = User(f_name,l_name,email,password,password2)
-        new_user.save_email
+        new_user.save_email()
         new_user.save_password
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('login'))
     return render_template('signup.html', form= form)
