@@ -5,6 +5,8 @@ from app import app
 @app.route('/')
 def dashboard():
 
+    title = 'Home - Welcome to The best Movie Review Website Online'
+
     return render_template('index.html')
 
 @app.route('/login')
