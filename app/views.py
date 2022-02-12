@@ -17,6 +17,7 @@ def dashboard():
     mail= Credentials.Credentials.ac_email
     pword= Credentials.Credentials.ac_password
     acc= Credentials.Credentials.ac_type
+    length = len(acc)
     form = Credential_log()
     
     if form.validate_on_submit():
@@ -30,7 +31,7 @@ def dashboard():
 
     title = 'Home - Welcome to The best Movie Review Website Online'
 
-    return render_template('index.html',form=form , pword= pword, mail = mail, acc = acc)
+    return render_template('index.html',form=form , pword= pword, mail = mail, acc = acc, length=length)
 
 @app.route('/login', methods=['GET','POST'])
 def login():
