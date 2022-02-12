@@ -4,6 +4,8 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/style.css">
         {% if title %}
         <title> {{ title }}</title>
         {% else %}
@@ -14,17 +16,27 @@
         {{ v }}
         <h1>index works</h1>
         {{ wtf.quick_form(form) }}
-        {%for i in range(0,len+1) %}
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="https://cdn.vectorstock.com/i/1000x1000/75/56/safe-icon-simple-style-vector-19417556.webp" alt="Card image cap" width=" 200px">
-            <div class="card-body">
-              <h2 class="card-title">{{acc[i]}}</h2>
-              <p class="card-text">Email: {{mail[i]}}</p>
-              <p class="card-text">Password: {{pword[i]}}</p>
-              <a href="#" class="btn btn-primary">Generate Password</a>
+        
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-sm">
+                    {%for i in range(0,len+1) %}
+                
+                    <div class="card" >
+                        <img class="card-img-top" src="https://cdn.vectorstock.com/i/1000x1000/75/56/safe-icon-simple-style-vector-19417556.webp" alt="Card image cap" width=" 200px">
+                        <div class="card-body">
+                            <h2 class="card-title">{{acc[i]}}</h2>
+                            <p class="card-text">Email: {{mail[i]}}</p>
+                            <p class="card-text">Password: {{pword[i]}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
-          </div>
-        {% endfor %}
+        </div>
+        
+        
         
     </body>
 </html>

@@ -1,0 +1,14 @@
+.card{
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+}
+
+.card > img {
+
+    width: 200px;
+
+}
+.card > card-body{
+    width: 200px;
+}
