@@ -21,12 +21,14 @@ def dashboard():
 def login():
     form= LogInForm()
     emails = User.user_email
-    if form.validate_on_submit():
-        email = form.email.data
+    email = form.email.data
+    password = form.password.data
+    
+    for i in range(0,len(emails)):
+        if email == emails[i]:
+            return redirect(url_for('dashboard'))
 
-        
-
-    return render_template('login.html',form=form,email =emails)
+    return render_template('login.html',form=form)
 
 @app.route('/signup',methods=['POST','GET'])
 def sigup():
