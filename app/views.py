@@ -1,8 +1,8 @@
-from crypt import methods
+
 from flask import redirect, render_template, url_for
 from app import app
-from .models import User 
-from .forms import SignUpForm, LogInForm
+from .models import User , Credentials
+from .forms import SignUpForm, LogInForm, Credential_log
 
 
 User = User.User
@@ -10,12 +10,27 @@ User = User.User
 app.config['SECRET_KEY'] = 'aSKh3r'
 
 #Views
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def dashboard():
+
+    
+    mail= Credentials.Credentials.ac_email
+    pword= Credentials.Credentials.ac_password
+    acc= Credentials.Credentials.ac_type
+    form = Credential_log()
+    
+    if form.validate_on_submit():
+        acc_type = form.acc_type.data 
+        email = form.email.data
+        password = form.password.data
+        new_cred = Credentials.Credentials(acc_type,email,password)
+        new_cred.save_credentials()
+        
+        
 
     title = 'Home - Welcome to The best Movie Review Website Online'
 
-    return render_template('index.html')
+    return render_template('index.html',form=form , pword= pword, mail = mail, acc = acc)
 
 @app.route('/login', methods=['GET','POST'])
 def login():

@@ -16,4 +16,11 @@ class LogInForm(FlaskForm):
      email = StringField('Email', validators=[InputRequired()])
      password=StringField('Password', validators=[InputRequired()])
      submit = SubmitField('Submit')
+
+class Credential_log(FlaskForm):
+    acc_type = StringField('Account Type', validators=[InputRequired()])
+    email = StringField('Email', validators=[InputRequired()])
+    password=StringField('Password', validators=[InputRequired()])
+    submit = SubmitField('Submit')
+
     
