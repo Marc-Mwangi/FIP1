@@ -31,7 +31,7 @@ def dashboard():
 
     title = 'Home - Welcome to The best Movie Review Website Online'
 
-    return render_template('index.html',form=form , pword= pword, mail = mail, acc = acc, length=length)
+    return render_template('index.html',form=form , pword= pword, mail = mail, acc = acc, len=length)
 
 @app.route('/login', methods=['GET','POST'])
 def login():
